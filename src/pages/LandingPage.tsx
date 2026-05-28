@@ -191,12 +191,73 @@ export default function LandingPage() {
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#ffffff', fontFamily: 'Inter, system-ui, sans-serif' }}>
+      <style>{`
+        /* NAV */
+        .hfp-nav-links { display: flex; align-items: center; gap: 32px; }
+        .hfp-nav-cta { display: block; }
+        /* HERO */
+        .hfp-hero { padding: 80px 24px 0; }
+        .hfp-hero-h1 { font-size: clamp(36px, 6vw, 68px); }
+        /* STATS */
+        .hfp-stats { grid-template-columns: repeat(3,1fr); }
+        /* PROJECT GRID */
+        .hfp-projects-grid { grid-template-columns: repeat(3,1fr); gap: 20px; }
+        /* HOW IT WORKS */
+        .hfp-timeline-line { display: block; }
+        .hfp-timeline-item { justify-content: flex-start; margin-bottom: 56px; }
+        .hfp-timeline-card { width: 44%; }
+        .hfp-timeline-node { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); }
+        .hfp-timeline-arrow { display: block; }
+        /* BENEFITS */
+        .hfp-benefits-grid { grid-template-columns: repeat(4,1fr); gap: 24px; }
+        /* TESTIMONIALS rows */
+        .hfp-marquee-row { margin-bottom: 20px; }
+        /* FOOTER */
+        .hfp-footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+        .hfp-footer-bottom { flex-direction: row; }
+        .hfp-footer-bottom-links { flex-direction: row; flex-wrap: nowrap; }
+        /* FLOATING CTA */
+        .hfp-float { bottom: 32px; right: 32px; }
+
+        @media (max-width: 1024px) {
+          .hfp-benefits-grid { grid-template-columns: repeat(2,1fr) !important; }
+          .hfp-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+        }
+        @media (max-width: 768px) {
+          .hfp-nav-links { display: none !important; }
+          .hfp-nav-cta { font-size: 13px !important; padding: 8px 14px !important; }
+          .hfp-hero { padding: 48px 20px 0 !important; }
+          .hfp-stats { grid-template-columns: repeat(3,1fr) !important; }
+          .hfp-stats-val { font-size: 22px !important; }
+          .hfp-projects-grid { grid-template-columns: repeat(2,1fr) !important; gap: 12px !important; }
+          .hfp-project-card { padding: 20px 12px !important; }
+          .hfp-timeline-line { display: none !important; }
+          .hfp-timeline-item { justify-content: center !important; flex-direction: column !important; align-items: center !important; margin-bottom: 32px !important; }
+          .hfp-timeline-card { width: 100% !important; }
+          .hfp-timeline-node { position: static !important; transform: none !important; margin-bottom: 16px !important; order: -1; }
+          .hfp-timeline-arrow { display: none !important; }
+          .hfp-benefits-grid { grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+          .hfp-benefit-card { padding: 24px 18px !important; }
+          .hfp-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 28px !important; }
+          .hfp-float { bottom: 16px !important; right: 16px !important; }
+        }
+        @media (max-width: 480px) {
+          .hfp-projects-grid { grid-template-columns: repeat(2,1fr) !important; }
+          .hfp-benefits-grid { grid-template-columns: 1fr !important; }
+          .hfp-footer-grid { grid-template-columns: 1fr !important; }
+          .hfp-footer-bottom { flex-direction: column !important; align-items: center !important; text-align: center !important; gap: 12px !important; }
+          .hfp-footer-bottom-links { flex-wrap: wrap !important; justify-content: center !important; gap: 12px !important; }
+          .hfp-float-btn { font-size: 13px !important; padding: 11px 16px !important; }
+          .hfp-cta-section h2 { font-size: 28px !important; }
+        }
+      `}</style>
 
       {/* ── FLOATING CTA ── */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.5 }}
+        className="hfp-float"
         style={{
           position: 'fixed', bottom: 32, right: 32, zIndex: 999,
         }}
@@ -259,7 +320,7 @@ export default function LandingPage() {
             </span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+          <div className="hfp-nav-links" style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
             <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{
               fontSize: 16, color: '#0f172a', textDecoration: 'none', fontWeight: 600,
             }}>Home</a>
@@ -411,7 +472,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── PROJECT TYPES ── */}
-      <section id="projects" style={{
+      <section id="projects" className="hfp-section-pad" style={{
         minHeight: '100vh',
         backgroundColor: '#f0f4ff',
         display: 'flex', flexDirection: 'column',
@@ -464,7 +525,7 @@ export default function LandingPage() {
           </motion.div>
 
           {/* Cards grid — 3 cols top, 3 cols bottom */}
-          <div style={{
+          <div className="hfp-projects-grid" style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
             gap: 20,
@@ -604,7 +665,7 @@ export default function LandingPage() {
           <div style={{ position: 'relative' }}>
 
             {/* Vertical center line */}
-            <div style={{
+            <div className="hfp-timeline-line" style={{
               position: 'absolute', left: '50%', top: 0, bottom: 0,
               width: 2,
               background: 'linear-gradient(to bottom, transparent, rgba(37,99,235,0.6) 10%, rgba(37,99,235,0.6) 90%, transparent)',
@@ -647,6 +708,7 @@ export default function LandingPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.55, delay: 0.1 }}
+                  className="hfp-timeline-item"
                   style={{
                     display: 'flex',
                     justifyContent: isLeft ? 'flex-start' : 'flex-end',
@@ -657,7 +719,7 @@ export default function LandingPage() {
                   }}
                 >
                   {/* Card — takes up ~44% width on each side */}
-                  <div style={{
+                  <div className="hfp-timeline-card" style={{
                     width: '44%',
                     backgroundColor: '#0f1f3d',
                     border: '1px solid rgba(37,99,235,0.25)',
@@ -685,7 +747,7 @@ export default function LandingPage() {
                     </p>
 
                     {/* Connector arrow pointing toward center line */}
-                    <div style={{
+                    <div className="hfp-timeline-arrow" style={{
                       position: 'absolute',
                       top: '50%',
                       [isLeft ? 'right' : 'left']: -12,
@@ -698,7 +760,7 @@ export default function LandingPage() {
                   </div>
 
                   {/* Number node on center line */}
-                  <div style={{
+                  <div className="hfp-timeline-node" style={{
                     position: 'absolute', left: '50%', top: '50%',
                     transform: 'translate(-50%, -50%)',
                     zIndex: 2,
@@ -823,7 +885,7 @@ export default function LandingPage() {
             </p>
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
+          <div className="hfp-benefits-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
             {[
               { icon: Clock, title: 'Results in Minutes', desc: 'Answer a few questions and see real financing options instantly — no waiting, no callbacks.', stat: '~2 min', statLabel: 'avg. completion time', accent: '#3b82f6', glow: 'rgba(59,130,246,0.15)' },
               { icon: Shield, title: 'No Hard Credit Pull', desc: "Checking your options won't affect your credit score. We use a soft inquiry only.", stat: '0 pts', statLabel: 'credit score impact', accent: '#22c55e', glow: 'rgba(34,197,94,0.12)' },
@@ -897,7 +959,7 @@ export default function LandingPage() {
       }}>
         {/* Main footer body */}
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '72px 40px 48px' }}>
-          <div style={{
+          <div className="hfp-footer-grid" style={{
             display: 'grid',
             gridTemplateColumns: '2fr 1fr 1fr 1fr',
             gap: 48,
@@ -1019,11 +1081,11 @@ export default function LandingPage() {
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', margin: '48px 0 28px' }} />
 
           {/* Bottom bar */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+          <div className="hfp-footer-bottom" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
             <p style={{ fontSize: 12, color: '#e2e8f0', margin: 0 }}>
               © 2026 HomeFinancePro. All rights reserved.
             </p>
-            <div style={{ display: 'flex', gap: 24 }}>
+            <div className="hfp-footer-bottom-links" style={{ display: 'flex', gap: 24 }}>
               {['Privacy Policy', 'Terms of Service', 'NMLS Disclosure', 'Cookie Policy'].map(link => (
                 <a key={link} href="#" style={{
                   fontSize: 12, color: '#cbd5e1', textDecoration: 'none', transition: 'color 0.2s',

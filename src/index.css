@@ -12,9 +12,69 @@ body {
   -webkit-font-smoothing: antialiased;
   background-color: #f8fafc;
   color: #0f172a;
+  overflow-x: hidden;
 }
 
 #root {
   min-height: 100vh;
   width: 100%;
+  overflow-x: hidden;
+}
+
+/* Prevent any element from breaking viewport width */
+img, video, svg { max-width: 100%; }
+
+/* Mobile nav: show hamburger placeholder */
+@media (max-width: 768px) {
+  .hfp-nav-links { display: none !important; }
+
+  /* Hero full-bleed on mobile */
+  .hfp-section-pad { padding: 48px 20px !important; }
+
+  /* Project section */
+  .hfp-projects-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  /* Timeline: stack vertically */
+  .hfp-timeline-item {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 32px !important;
+  }
+  .hfp-timeline-card { width: 100% !important; max-width: 480px; }
+  .hfp-timeline-node {
+    position: static !important;
+    transform: none !important;
+    margin-bottom: 16px !important;
+    order: -1;
+  }
+  .hfp-timeline-line { display: none !important; }
+  .hfp-timeline-arrow { display: none !important; }
+
+  /* Benefits 2-col on tablet */
+  .hfp-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Footer 2-col */
+  .hfp-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 28px !important; }
+
+  /* Apply page */
+  .apply-header-center { display: none !important; }
+  .apply-header-trust  { display: none !important; }
+  .apply-step-connector { width: 24px !important; }
+  .apply-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
+}
+
+@media (max-width: 480px) {
+  .hfp-benefits-grid  { grid-template-columns: 1fr !important; }
+  .hfp-footer-grid    { grid-template-columns: 1fr !important; }
+  .hfp-footer-bottom  { flex-direction: column !important; align-items: center !important; text-align: center !important; }
+  .hfp-footer-bottom-links { flex-wrap: wrap !important; justify-content: center !important; gap: 10px !important; }
+  .hfp-float  { bottom: 12px !important; right: 12px !important; }
+  .apply-footer-grid  { grid-template-columns: 1fr !important; }
+  .apply-card-footer-pad { flex-direction: column-reverse !important; gap: 10px !important; }
+  .apply-card-footer-pad > * { width: 100% !important; justify-content: center !important; }
+  .apply-step-connector { width: 12px !important; }
 }

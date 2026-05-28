@@ -1,0 +1,74 @@
+/* ── Global mobile resets ── */
+* { box-sizing: border-box; }
+
+/* ── NAV ── */
+@media (max-width: 768px) {
+  .nav-desktop-links { display: none !important; }
+  .nav-cta { font-size: 13px !important; padding: 8px 14px !important; }
+  .nav-logo-text { font-size: 15px !important; }
+}
+
+/* ── HERO ── */
+@media (max-width: 768px) {
+  .hero-section { padding: 48px 20px 0 !important; min-height: calc(100vh - 60px) !important; }
+  .hero-cta-btn { font-size: 15px !important; padding: 14px 28px !important; }
+  .stats-grid { grid-template-columns: repeat(3,1fr) !important; }
+  .stats-item { padding: 20px 10px !important; }
+}
+
+/* ── PROJECT CARDS ── */
+@media (max-width: 640px) {
+  .projects-grid { grid-template-columns: repeat(2,1fr) !important; gap: 12px !important; }
+}
+
+/* ── HOW IT WORKS timeline ── */
+@media (max-width: 768px) {
+  .timeline-center-line { display: none !important; }
+  .timeline-item { justify-content: center !important; }
+  .timeline-card { width: 100% !important; }
+  .timeline-node { position: static !important; transform: none !important; margin: 0 auto 16px !important; }
+  .timeline-arrow { display: none !important; }
+}
+
+/* ── BENEFITS ── */
+@media (max-width: 640px) {
+  .benefits-grid { grid-template-columns: 1fr !important; }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  .benefits-grid { grid-template-columns: repeat(2,1fr) !important; }
+}
+
+/* ── FOOTER ── */
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+}
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr !important; }
+  .footer-bottom { flex-direction: column !important; text-align: center !important; }
+  .footer-bottom-links { flex-wrap: wrap !important; justify-content: center !important; gap: 12px !important; }
+}
+
+/* ── APPLY PAGE HEADER ── */
+@media (max-width: 768px) {
+  .apply-header-inner { padding: 0 16px !important; }
+  .apply-header-center { display: none !important; }
+  .apply-header-trust { display: none !important; }
+  .apply-step-dots { gap: 4px !important; }
+  .apply-step-connector { width: 24px !important; }
+  .apply-card-padding { padding: 24px 20px 12px !important; }
+  .apply-card-footer { padding: 16px 20px 24px !important; }
+}
+
+/* ── RESULTS GRID ── */
+@media (max-width: 900px) {
+  .results-grid { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media (max-width: 600px) {
+  .results-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── FLOATING CTA ── */
+@media (max-width: 480px) {
+  .floating-cta { bottom: 16px !important; right: 16px !important; }
+  .floating-cta button { font-size: 13px !important; padding: 12px 18px !important; }
+}

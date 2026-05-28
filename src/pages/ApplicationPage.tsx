@@ -2,6 +2,33 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, ChevronLeft, ChevronRight, Check, Shield, Lock, Phone, Mail, MapPin } from 'lucide-react';
+
+const applyStyles = `
+  .apply-header-inner { height: 68px; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
+  .apply-header-center { display: flex; flex-direction: column; align-items: center; }
+  .apply-header-trust { display: flex; align-items: center; gap: 20px; }
+  .apply-step-connector { width: 64px; }
+  .apply-card-pad { padding: 40px 40px 16px; }
+  .apply-card-footer-pad { padding: 20px 40px 32px; }
+  .apply-footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+  .apply-footer-bottom { flex-direction: row; justify-content: space-between; }
+  @media (max-width: 768px) {
+    .apply-header-inner { height: 56px !important; padding: 0 16px !important; }
+    .apply-header-center { display: none !important; }
+    .apply-header-trust { display: none !important; }
+    .apply-step-connector { width: 28px !important; }
+    .apply-card-pad { padding: 24px 20px 12px !important; }
+    .apply-card-footer-pad { padding: 16px 20px 24px !important; }
+    .apply-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
+  }
+  @media (max-width: 480px) {
+    .apply-step-connector { width: 16px !important; }
+    .apply-footer-grid { grid-template-columns: 1fr !important; }
+    .apply-footer-bottom { flex-direction: column !important; align-items: center !important; text-align: center !important; gap: 10px !important; }
+    .apply-card-footer-pad { flex-direction: column-reverse !important; gap: 12px !important; }
+    .apply-card-footer-pad button { width: 100% !important; justify-content: center !important; }
+  }
+`;
 import type { FormData } from '../types';
 import Step1Project from '../components/steps/Step1Project';
 import Step2Location from '../components/steps/Step2Location';
@@ -52,6 +79,7 @@ export default function ApplicationPage() {
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f1f5f9', fontFamily: 'Inter, system-ui, sans-serif', display: 'flex', flexDirection: 'column' }}>
+      <style>{applyStyles}</style>
 
       {/* ── HEADER ── */}
       <header style={{
@@ -60,8 +88,8 @@ export default function ApplicationPage() {
         position: 'sticky', top: 0, zIndex: 50,
         boxShadow: '0 1px 8px rgba(0,0,0,0.06)',
       }}>
-        <div style={{
-          maxWidth: 1200, margin: '0 auto',
+        <div className="apply-header-inner" style={{
+          maxWidth: 1200, margin: '0 auto', width: '100%',
           padding: '0 32px', height: 68,
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
@@ -108,7 +136,7 @@ export default function ApplicationPage() {
           </div>
 
           {/* Center: step label */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div className="apply-header-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <span style={{ fontSize: 12, fontWeight: 700, color: '#2563eb', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
               Step {step + 1} of {STEPS.length}
             </span>
@@ -118,7 +146,7 @@ export default function ApplicationPage() {
           </div>
 
           {/* Right: trust badges */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+          <div className="apply-header-trust" style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
             {[
               { icon: Shield, label: 'No Hard Pull' },
               { icon: Lock, label: 'Encrypted' },
@@ -173,7 +201,7 @@ export default function ApplicationPage() {
                   }}>{s.short}</span>
                 </div>
                 {i < STEPS.length - 1 && (
-                  <div style={{
+                  <div className="apply-step-connector" style={{
                     width: 64, height: 2, borderRadius: 99, marginBottom: 18,
                     backgroundColor: i < step ? '#22c55e' : '#e2e8f0',
                     transition: 'background-color 0.3s',
@@ -204,7 +232,7 @@ export default function ApplicationPage() {
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.24, ease: 'easeInOut' }}
-                  style={{ padding: '40px 40px 16px' }}
+                  className="apply-card-pad" style={{ padding: '40px 40px 16px' }}
                 >
                   {step === 0 && <Step1Project form={form} update={update} onNext={next} />}
                   {step === 1 && <Step2Location form={form} update={update} onNext={next} />}
@@ -215,10 +243,10 @@ export default function ApplicationPage() {
             </div>
 
             {/* Card footer nav */}
-            <div style={{
+            <div className="apply-card-footer-pad" style={{
               padding: '20px 40px 32px',
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              borderTop: '1px solid #f1f5f9',
+              borderTop: '1px solid #f1f5f9', flexWrap: 'wrap', gap: 12,
             }}>
               <button onClick={back} style={{
                 display: 'flex', alignItems: 'center', gap: 6,
@@ -293,7 +321,7 @@ export default function ApplicationPage() {
       }}>
         {/* Main footer */}
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '48px 40px 32px' }}>
-          <div style={{
+          <div className="apply-footer-grid" style={{
             display: 'grid',
             gridTemplateColumns: '2fr 1fr 1fr 1fr',
             gap: 40,

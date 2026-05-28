@@ -133,7 +133,7 @@ export default function ApplicationPage() {
                 <Home size={17} color="#fff" />
               </div>
               <span style={{ fontWeight: 900, fontSize: 17, color: '#0f172a' }}>
-                HomeFinance<span style={{ color: '#2563eb' }}>Pro</span>
+                Improve Plus Financial
               </span>
             </button>
           </div>
@@ -342,7 +342,7 @@ export default function ApplicationPage() {
                   <Home size={17} color="#fff" />
                 </div>
                 <span style={{ fontWeight: 900, fontSize: 17, color: '#f1f5f9' }}>
-                  HomeFinance<span style={{ color: '#3b82f6' }}>Pro</span>
+                  Improve Plus Financial
                 </span>
               </div>
               <p style={{ fontSize: 13, color: '#cbd5e1', lineHeight: 1.8, maxWidth: 280, margin: '0 0 20px' }}>
@@ -350,7 +350,7 @@ export default function ApplicationPage() {
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {[
-                  { icon: Mail, text: 'hello@homefinancepro.com' },
+                  { icon: Mail, text: 'hello@improveplusfinancial.com' },
                   { icon: Phone, text: '1-800-HOME-FIN' },
                   { icon: MapPin, text: 'United States (All States)' },
                 ].map(({ icon: Icon, text }) => (
@@ -401,7 +401,7 @@ export default function ApplicationPage() {
 
           {/* Bottom bar */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-            <span style={{ fontSize: 12, color: '#e2e8f0' }}>© 2026 HomeFinancePro. All rights reserved. NMLS #0000000. Equal Housing Lender.</span>
+            <span style={{ fontSize: 12, color: '#e2e8f0' }}>© 2026 Improve Plus Financial. All rights reserved. NMLS #0000000. Equal Housing Lender.</span>
             <div style={{ display: 'flex', gap: 6 }}>
               {[Shield, Lock, Check].map((Icon, i) => (
                 <div key={i} style={{

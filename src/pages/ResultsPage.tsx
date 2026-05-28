@@ -169,7 +169,7 @@ export default function ResultsPage() {
             <div style={{ width: 32, height: 32, backgroundColor: '#2563eb', borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Home size={16} color="#fff" />
             </div>
-            <span style={{ fontWeight: 800, fontSize: 16, color: '#0f172a' }}>HomeFinance<span style={{ color: '#2563eb' }}>Pro</span></span>
+            <span style={{ fontWeight: 800, fontSize: 16, color: '#0f172a' }}>Improve Plus Financial</span>
           </button>
           <button onClick={() => navigate('/apply')} style={{
             display: 'flex', alignItems: 'center', gap: 6,

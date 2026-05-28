@@ -25,7 +25,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const { address, city, state, zipCode } = req.body || {};
   if (!address || !zipCode) return res.status(400).json({ error: 'Address and ZIP code are required' });
 
-  const ATTOM_KEY = process.env.ATTOM_API_KEY;
+  // Use env var if set, otherwise fall back to the hardcoded trial key
+  const ATTOM_KEY = process.env.ATTOM_API_KEY || '825fcc853efc710d975086d588600441';
 
   // ── If no real API key, return realistic mock data ──
   if (!ATTOM_KEY || ATTOM_KEY === 'demo') {

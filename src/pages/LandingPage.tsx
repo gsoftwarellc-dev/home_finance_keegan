@@ -48,12 +48,12 @@ const avatars = [
 const testimonials = [
   { name: 'Ashley Johnson', project: 'Pool Construction', text: 'Found a $42,000 pool financing option in under 5 minutes. The process was simple and professional.', stars: 5, avatar: avatars[0] },
   { name: 'Matthew Carter', project: 'Home Remodeling', text: 'They matched me with a lender another broker couldn\'t find. The rate was way better than I expected.', stars: 5, avatar: avatars[1] },
-  { name: 'Sarah Williams', project: 'HVAC Installation', text: 'HVAC financing was handled quickly. HomeFinancePro helped me avoid a bad deal and get the right loan.', stars: 5, avatar: avatars[2] },
+  { name: 'Sarah Williams', project: 'HVAC Installation', text: 'HVAC financing was handled quickly. Improve Plus Financial helped me avoid a bad deal and get the right loan.', stars: 5, avatar: avatars[2] },
   { name: 'Brian Anderson', project: 'Roofing', text: 'The roofing loan comparison page was incredibly clear. I knew exactly what I was signing up for.', stars: 5, avatar: avatars[3] },
   { name: 'Jessica Miller', project: 'Outdoor Living', text: 'Clear quote, fair process, and no guesswork. My outdoor kitchen project got funded in 3 days.', stars: 5, avatar: avatars[4] },
   { name: 'Daniel Thompson', project: 'Kitchen Remodel', text: 'The side-by-side loan comparison made it so easy to pick the right payment plan for our kitchen.', stars: 5, avatar: avatars[5] },
   { name: 'Lauren Cooper', project: 'Bathroom Renovation', text: 'Got pre-qualified in minutes with no hard credit pull. My contractor was thrilled we could start so fast.', stars: 5, avatar: avatars[6] },
-  { name: 'Michael Reynolds', project: 'Home Addition', text: 'HomeFinancePro diagnosed my financing needs quickly and had me funded faster than expected.', stars: 5, avatar: avatars[7] },
+  { name: 'Michael Reynolds', project: 'Home Addition', text: 'Improve Plus Financial diagnosed my financing needs quickly and had me funded faster than expected.', stars: 5, avatar: avatars[7] },
   { name: 'Emily Harris', project: 'Pool Construction', text: 'I applied from my phone in 4 minutes. Three lender options appeared — I picked the best one instantly.', stars: 5, avatar: avatars[8] },
   { name: 'Chris Bennett', project: 'Solar Installation', text: 'Never thought financing a solar project would be this smooth. Low rate, fast approval, great experience.', stars: 5, avatar: avatars[9] },
   { name: 'Rachel Foster', project: 'HVAC Replacement', text: 'The lender matched me perfectly based on my credit. Monthly payment fits my budget exactly.', stars: 5, avatar: avatars[10] },
@@ -316,7 +316,7 @@ export default function LandingPage() {
               <Home size={18} color="#fff" />
             </div>
             <span style={{ fontWeight: 800, fontSize: 18, color: '#0f172a' }}>
-              HomeFinance<span style={{ color: '#2563eb' }}>Pro</span>
+              Improve Plus Financial
             </span>
           </div>
 
@@ -977,7 +977,7 @@ export default function LandingPage() {
                   <Home size={20} color="#fff" />
                 </div>
                 <span style={{ fontWeight: 900, fontSize: 20, color: '#f1f5f9' }}>
-                  HomeFinance<span style={{ color: '#3b82f6' }}>Pro</span>
+                  Improve Plus Financial
                 </span>
               </div>
               <p style={{ fontSize: 14, color: '#cbd5e1', lineHeight: 1.8, maxWidth: 300, margin: '0 0 28px' }}>
@@ -1041,7 +1041,7 @@ export default function LandingPage() {
             <div>
               <div style={{ fontSize: 12, fontWeight: 700, color: '#fff', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 20 }}>Contact</div>
               {[
-                { icon: '📧', text: 'hello@homefinancepro.com' },
+                { icon: '📧', text: 'hello@improveplusfinancial.com' },
                 { icon: '📞', text: '1-800-HOME-FIN' },
                 { icon: '📍', text: 'United States (All States)' },
               ].map(({ icon, text }) => (
@@ -1083,7 +1083,7 @@ export default function LandingPage() {
           {/* Bottom bar */}
           <div className="hfp-footer-bottom" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
             <p style={{ fontSize: 12, color: '#e2e8f0', margin: 0 }}>
-              © 2026 HomeFinancePro. All rights reserved.
+              © 2026 Improve Plus Financial. All rights reserved.
             </p>
             <div className="hfp-footer-bottom-links" style={{ display: 'flex', gap: 24 }}>
               {['Privacy Policy', 'Terms of Service', 'NMLS Disclosure', 'Cookie Policy'].map(link => (
@@ -1099,7 +1099,7 @@ export default function LandingPage() {
 
           {/* Legal disclaimer */}
           <p style={{ fontSize: 11, color: '#94a3b8', marginTop: 20, lineHeight: 1.7, maxWidth: 900 }}>
-            <strong style={{ color: '#e2e8f0' }}>Disclaimer:</strong> HomeFinancePro is a financing marketplace mockup for demonstration purposes only.
+            <strong style={{ color: '#e2e8f0' }}>Disclaimer:</strong> Improve Plus Financial is a financing marketplace mockup for demonstration purposes only.
             Estimated options displayed are not a guarantee of credit or final loan approval.
             Final approval, rates, and terms are subject to lender underwriting and verification. Not a commitment to lend.
             NMLS #0000000. Equal Housing Lender.

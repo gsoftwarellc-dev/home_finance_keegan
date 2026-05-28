@@ -29,12 +29,6 @@ const projects = [
   { icon: Wrench, label: 'Kitchens & Baths' },
 ];
 
-const benefits = [
-  { icon: Clock, title: 'Results in Minutes', desc: 'Answer a few questions and see real financing options instantly.' },
-  { icon: Shield, title: 'No Hard Credit Pull', desc: "Checking your options won't affect your credit score." },
-  { icon: Users, title: 'Multiple Lenders', desc: 'We match you with multiple lenders so you can compare and choose.' },
-  { icon: CheckCircle, title: 'Free to Use', desc: 'No fees, no obligations. Just financing options tailored for you.' },
-];
 
 const avatars = [
   'https://i.pravatar.cc/64?img=1',
@@ -135,7 +129,6 @@ function MarqueeRow({ items, dir, baseSpeed, row }: {
   items: Testimonial[]; dir: 1 | -1; baseSpeed: number; row: number;
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
-  const posRef = useRef(dir === -1 ? -50 : 0); // % of half-width
   const speedRef = useRef(baseSpeed);
   const rafRef = useRef(0);
   const activeRef = useRef(false);
@@ -759,9 +752,9 @@ export default function LandingPage() {
 
         {/* 3 rows — LTR, RTL, LTR */}
         {[
-          { items: [...testimonials.slice(0, 4), ...testimonials.slice(0, 4)], dir: 1,  speed: 0.6, row: 0 },
-          { items: [...testimonials.slice(4, 8), ...testimonials.slice(4, 8)], dir: -1, speed: 0.5, row: 1 },
-          { items: [...testimonials.slice(8, 12), ...testimonials.slice(8, 12)], dir: 1, speed: 0.7, row: 2 },
+          { items: [...testimonials.slice(0, 4), ...testimonials.slice(0, 4)], dir: 1 as const,  speed: 0.6, row: 0 },
+          { items: [...testimonials.slice(4, 8), ...testimonials.slice(4, 8)], dir: -1 as const, speed: 0.5, row: 1 },
+          { items: [...testimonials.slice(8, 12), ...testimonials.slice(8, 12)], dir: 1 as const, speed: 0.7, row: 2 },
         ].map(({ items, dir, speed, row }) => (
           <MarqueeRow key={row} items={items} dir={dir} baseSpeed={speed} row={row} />
         ))}

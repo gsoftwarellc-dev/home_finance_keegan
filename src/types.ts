@@ -37,3 +37,19 @@ export interface LoanOption {
   bestFor: string;
   nextStep: string;
 }
+
+export interface PropertyData {
+  found: boolean;
+  source: 'attom' | 'demo';
+  address: string;
+  estimatedValue: number | null;
+  remainingBalance: number | null;
+  equity: number | null;
+  maxBorrowable: number | null;
+  yearBuilt: number | null;
+  bedrooms: number | null;
+  bathrooms: number | null;
+  sqft: number | null;
+  lastSalePrice: number | null;
+  lastSaleDate: string | null;
+}

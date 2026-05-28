@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckCircle, ChevronRight, Clock, TrendingDown, Zap, Building, ArrowLeft, Star, Info, Home } from 'lucide-react';
-import type { FormData, LoanOption } from '../types';
+import type { FormData, LoanOption, PropertyData } from '../types';
+import EquityCard from '../components/EquityCard';
 
 const tagConfig: Record<string, { bg: string; text: string; border: string; icon: React.ElementType }> = {
   blue:   { bg: '#eff6ff', text: '#1d4ed8', border: '#bfdbfe', icon: Star },
@@ -153,6 +154,7 @@ export default function ResultsPage() {
   const location = useLocation();
   const form = (location.state?.form ?? {}) as FormData;
   const options = (location.state?.options ?? []) as LoanOption[];
+  const propertyData = (location.state?.propertyData ?? null) as PropertyData | null;
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc', fontFamily: 'Inter, system-ui, sans-serif' }}>
@@ -218,6 +220,11 @@ export default function ResultsPage() {
             </div>
           ) : null)}
         </div>
+
+        {/* Equity summary if property data available */}
+        {propertyData && (
+          <EquityCard status="success" data={propertyData} error={null} />
+        )}
 
         {/* Cards grid */}
         {options.length > 0 ? (

@@ -2,6 +2,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, ChevronLeft, ChevronRight, Check, Shield, Lock, Phone, Mail, MapPin } from 'lucide-react';
+import type { FormData } from '../types';
+import { usePropertyLookup } from '../hooks/usePropertyLookup';
+import Step1Project from '../components/steps/Step1Project';
+import Step2Location from '../components/steps/Step2Location';
+import Step3Financial from '../components/steps/Step3Financial';
+import Step4Contact from '../components/steps/Step4Contact';
 
 const applyStyles = `
   .apply-header-inner { height: 68px; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
@@ -29,11 +35,6 @@ const applyStyles = `
     .apply-card-footer-pad button { width: 100% !important; justify-content: center !important; }
   }
 `;
-import type { FormData } from '../types';
-import Step1Project from '../components/steps/Step1Project';
-import Step2Location from '../components/steps/Step2Location';
-import Step3Financial from '../components/steps/Step3Financial';
-import Step4Contact from '../components/steps/Step4Contact';
 
 const STEPS = [
   { label: 'Project Details', short: 'Project' },
@@ -56,12 +57,14 @@ export default function ApplicationPage() {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState<FormData>(defaultForm);
   const [direction, setDirection] = useState(1);
+  const { data: propertyData, status: propertyStatus, error: propertyError, lookup: triggerLookup } = usePropertyLookup();
 
   const update = (fields: Partial<FormData>) => setForm((f) => ({ ...f, ...fields }));
 
   const next = () => {
     if (step < 3) { setDirection(1); setStep((s) => s + 1); }
-    else navigate('/matching', { state: { form } });
+    // Pass property data to matching page so lender logic can use equity
+    else navigate('/matching', { state: { form, propertyData } });
   };
 
   const back = () => {
@@ -235,7 +238,9 @@ export default function ApplicationPage() {
                   className="apply-card-pad" style={{ padding: '40px 40px 16px' }}
                 >
                   {step === 0 && <Step1Project form={form} update={update} onNext={next} />}
-                  {step === 1 && <Step2Location form={form} update={update} onNext={next} />}
+                  {step === 1 && <Step2Location form={form} update={update} onNext={next}
+                    propertyStatus={propertyStatus} propertyData={propertyData}
+                    propertyError={propertyError} triggerLookup={triggerLookup} />}
                   {step === 2 && <Step3Financial form={form} update={update} onNext={next} />}
                   {step === 3 && <Step4Contact form={form} update={update} onNext={next} />}
                 </motion.div>

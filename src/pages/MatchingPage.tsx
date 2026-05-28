@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { generateLoanOptions } from '../lenderLogic';
-import type { FormData } from '../types';
+import type { FormData, PropertyData } from '../types';
 
 const MESSAGES = [
   'Checking available financing programs…',
-  'Matching lenders to your project…',
+  'Analyzing your property equity…',
   'Comparing loan terms and rates…',
   'Verifying lender availability in your area…',
   'Preparing your personalized results…',
@@ -16,6 +16,7 @@ export default function MatchingPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const form = (location.state?.form ?? {}) as FormData;
+  const propertyData = (location.state?.propertyData ?? null) as PropertyData | null;
   const [msgIndex, setMsgIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
@@ -26,8 +27,8 @@ export default function MatchingPage() {
         if (p >= 100) {
           clearInterval(progTimer);
           clearInterval(msgTimer);
-          const options = generateLoanOptions(form);
-          setTimeout(() => navigate('/results', { state: { form, options } }), 400);
+          const options = generateLoanOptions(form, propertyData);
+          setTimeout(() => navigate('/results', { state: { form, options, propertyData } }), 400);
           return 100;
         }
         return p + 2;
